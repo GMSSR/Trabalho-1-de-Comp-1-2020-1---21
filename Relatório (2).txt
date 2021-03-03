@@ -1,0 +1,121 @@
+Alunos:
+Gustavo Lima Cosenza de Carvalho DRE: 117197940
+Gabriel Menezes San Segundo Rebello DRE: 120018731
+Jonathan P. Araujo DRE: 119146733
+
+
+
+			Trabalho de simulador de jogos de tabuleiro de computação 1.
+
+	21:
+O objetivo desse trabalho é terminá-lo com uma simulação, mesmo que baseada em texto do jogo 21 ou Blackjack.
+	
+	REGRAS:
+
+	O usuário precisará seguir as seguinte regras para jogar 21, existem regras levemente diferentes entre lugares 
+diferentes então mantivemos as mais básicas:
+	A mão começa quando o jogador decide a aposta que ele quer dar, mínimo 1, máximo 200.
+	Ambos o jogador e o crupiê receberão 2 cartas, o jogador consegue ver 3 dessas cartas 2 dele e 1 do crupiê.
+	Cada carta tem um valor, as cartas de 2 a 10 valem o valor de seus números, J, Q, e K valem todas 10 e Ás pode 
+valer 1 ou 11, dependendo de que situação o jogador com a carta estiver.
+	O objetivo do jogo é ter cartas que chegam o mais perto possível do somatório de 21 sem ir além. Primeiro, 
+dependendo do valor que o jogador tiver em suas cartas, ele pode ganhar imediatamente tendo 1 carta de valor 
+10 e um ás, ele pode decidir pegar mais 1 carta para aumentar suas chances de vencer da mão do crupiê, ele pode 
+passar para não arriscar a ultrapassagem do valor 21, ou ele pode escolher “dobrar” para dobrar sua aposta ao 
+mesmo tempo que ele pega a próxima carta, se o jogador for além de 21, imediatamente ele perde a mão.
+	Depois das escolhas do jogador, o crupiê revela sua segunda carta, e faz a mesmas decisões que o jogador, exceto 
+que ele não pode dobrar ou passar, ele sempre tem que tentar ganhar do jogador, se o jogador tiver um 21, o crupiê 
+deve tentar pegar um 21 para forçar um empate, mesmo se for além de 21.
+	Se o jogador terminar a mão mais próximo de 21 que o crupiê ele vence, fica com suas fichas apostadas, e recebe 
+o valor de suas fichas apostadas além disso, caso o crupiê esteja mais perto, ele perde suas fichas apostadas, 
+se ambos têm o mesmo valor em suas mãos ninguém perde nada, se o jogador vencer com um “21 natural” também 
+conhecido como um “Blackjack” (1 carta de valor 10 e 1 ás) ele vence 1,5x o valor de fichas apostadas além de 
+manter suas fichas apostadas.
+	Também existe a regra do “5 card charlie” que é raríssima, em que se o jogador ou o crupiê conseguirem acumular 
+5 cartas em sua mão sem passar de 21, mesmo que o valor das cartas seja mais baixo que o do oponente, é vitória automática.
+
+	O PROGRAMA EM SI:
+
+	Para se simular o jogo, é preciso se levar em consideração, antes de mais nada, o uso do baralho, o 
+único objeto necessário para se jogar 21.
+	O programa deve iniciar com um simples pedido para o usuário, como “Quantas fichas?(1-n)” e o usuário poderá 
+escolher entre 1 e n fichas para utilizar em “apostas” no jogo, que acabará servindo como uma pontuação. 
+Após isso ele deverá ser perguntado se deseja jogar uma mão de 21, se ele responder sim, o programa seguirá, 
+se não o jogo terminará e dirá “Obrigado por jogar! Você começou com ‘x’ fichas e terminou com ‘y’ fichas!” e 
+dará a opção de fechar o jogo.
+	Se sim for escolhido, uma mão de 21 começará:
+	O usuário será perguntado que aposta ele deseja dar nessa mão(mínimo 1, máximo 200).
+Após a aposta, o programa precisa escolher 4 cartas do baralho para dar para o jogador e para o crupiê, 
+aleatoriamente, porém ele precisa escolher as cartas 1 por 1 para tirá-las da rotação do baralho antes de cada 
+carta ser escolhida.
+	O usuário terá suas 2 cartas e o crupiê também, mas uma das cartas estará escondida, porém salva no programa.
+	O programa deverá checar se o jogador tem 21 depois de todos os estágios do programa em que ele receber uma 
+carta, se ele tiver 21 a vez dele acaba e a vez do crupiê começa, se ele tiver mais de 21 ele perde a mão e se 
+	Agora, o usuário pode pedir uma nova carta, ou “dobrar”, ambos os casos providenciarão mais uma carta ao jogador 
+e o “dobrar”, multiplicará o valor de sua aposta junto com a carta.
+	Alternativamente ele pode escolher passar e deixar o crupiê ter sua vez.
+	O programa agora deve revelar a segunda carta do crupiê ao usuário.
+	O programa, agindo como o crupiê, deve sempre jogar para ter uma pontuação em suas cartas maior que a do usuário, 
+se ele tiver menos, ele deve pedir mais uma carta da “pilha” até ter mais pontos ou a mesma quantidade no caso de 21.
+	Se ele já tiver mais que o usuário com as 2 cartas iniciais ele não precisa fazer nada.
+	Se o jogo chegar a esse estágio e o jogador não tiver perdido para o crupiê ou extrapolado além de 21 mais cedo 
+ele recebe as fichas de acordo com sua aposta, em qualquer outro caso ele perde as fichas apostadas e a mão acaba.
+	Quando a mão acaba o programa pergunta se o jogador deseja jogar outra mão,se sim, a função que tem o que acontece 
+durante uma mão do jogo reinicia. se não, o jogo mostra a mensagem “Obrigado por jogar! Você começou com ‘x’ fichas 
+e terminou com ‘y’ fichas!”
+
+
+
+	EXEMPLOS DE ENTRADA E SAÍDA:
+
+
+
+Entrada:					Saída:
+
+\n						Bem vindo ao simulador em texto de 21!
+200						Aperte Enter para começar a jogar
+200						Quantas fichas deseja iniciar?
+n						(Minimo 200)
+n						Quantas fichas quer apostar?
+						(Maximo 200)
+						Uma das cartas do crupie:
+						3
+						Suas cartas:
+						10
+						K
+						Soma de suas cartas: 20
+						Quer mais cartas? ‘s’, ‘n’ ou ‘d’ para
+						dobrar a aposta:
+						Soma de suas cartas: 20
+						Cartas do crupie:
+						3
+						K
+						A carta 3 do crupie eh:
+						4
+						Soma das cartas do crupie:17
+						Vitoria do jogador!
+						Suas fichas atuais 400
+						Gostaria de jogar do novo? ‘s’ ou ‘n’:
+						Parabens! Voce comecou com 200 e 
+						terminou com 400
+
+	
+
+
+	O CONTEÚDO DO CURSO QUE FOI USADO:
+
+
+	Considerando tudo desde o início do curso,foram usados:
+	-O uso de variáveis, constantes e tipos
+	-Entrada e saída no Console, Operadores
+	-Comandos de decisão e repetição
+	-Vetores e string
+	-Funções e recursão
+	-Escopo de variáveis
+
+	sendo mais específico, foram usados ainda, conhecimento sobre diferentes bibliotecas do C 
+e alguns de seus comandos específicos, diferentes maneiras de se re-utilizar variáveis, métodos para 
+reordenação de vetores, remoção de membros específicos de um vetor, implementação de "aleatoriedade" 
+usando o relógio do sistema, recursão por função, e declaração de funções.
+
+	
